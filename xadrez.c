@@ -1,13 +1,43 @@
 #include <stdio.h>
 
+/*Aqui comecei a criar os meus processos, como o usuário vai poder escolher a direção e a quantidade
+de casas, vou utilizar 2 variáveis dentro do "VOID"*/
+void moverTorre (int casas, char* direcao){
+    if (casas > 0)
+    {
+        printf("Movendo 1 Casa para %s \n", direcao);
+        moverTorre (casas - 1, direcao);
+    }
+    
+}
+
+void moverBispo (int casas, char* direcao1, char* direcao2){
+    if (casas > 0)
+    {
+        printf("Movendo 1 Casa para %s e para %s \n", direcao1, direcao2);
+        moverBispo (casas - 1, direcao1, direcao2);
+    }
+    
+}
+
+void moverRainha (int casas, char* direcao1){
+    if (casas > 0)
+    {
+        printf("Movendo 1 Casa para %s \n", direcao1);
+        moverRainha (casas - 1, direcao1);
+    }
+    
+}
+
+
+
 int main(){
 
     int i = 1; 
     int numero, numero2, numero3, numero4;
     unsigned int escolhadirecao, escolhadirecao2, escolhadirecao3, escolhadirecao4;
     int MovCavalo = 1 ; // Adicionado no desafio intermediário.
-
-
+    
     printf("escolha a direção que deseja ir com a torre!: \n");
     printf("1. Esquerda\n");
     printf("2. Direita\n");
@@ -23,10 +53,8 @@ int main(){
        printf ("Escolha agora a quantidade de Casas: \n");
        scanf("%d", &numero);
 
-       for (i; i <= numero; i++)
-       {
-        printf("Andando 1 casa para a Esquerda\n");
-       }
+       
+       moverTorre (numero, "Esquerda");
        
         break;
 
@@ -36,10 +64,7 @@ int main(){
        printf ("Escolha agora a quantidade de Casas: \n");
        scanf("%d", &numero);
 
-       for (i; i <= numero; i++)
-       {
-        printf("Andando 1 para a Direita\n");
-       } 
+        moverTorre (numero, "Direita");
        
         break;
 
@@ -48,10 +73,7 @@ int main(){
        printf ("Escolha agora a quantidade de Casas: \n");
        scanf("%d", &numero);
 
-       for (i ; i <= numero; i++)
-       {
-        printf("Andando 1 para Cima\n");
-       }
+        moverTorre (numero, "Cima");
        
         break;
     
@@ -78,12 +100,7 @@ printf("Escolha a direção que deseja ir com o bispo!: \n");
         printf("Escolha agora a quantidade de Casas: \n");
         scanf("%d", &numero2 );
 
-        i = 1;
-        while (i <= numero2 )
-        {
-            printf("Andando 1 casa para a Esquerda e para Cima\n");
-            i++;
-        }
+        moverBispo(numero2, "Esquerda", "Cima");
 
         break;
 
@@ -93,12 +110,8 @@ printf("Escolha a direção que deseja ir com o bispo!: \n");
         printf ("Escolha agora a quantidade de Casas: \n");
         scanf("%d", &numero2);
 
-        i = 1;
-        while (i <= numero2)
-        {
-            printf("Andando 1 casa para a Direita e para Cima\n");
-            i++;
-        }
+        moverBispo(numero2, "Direita", "Cima");
+
        
         break;
 
@@ -126,12 +139,7 @@ printf("Escolha a direção que deseja ir com o bispo!: \n");
        printf ("Escolha agora a quantidade de Casas: \n");
        scanf("%d", &numero3);
        
-       i = 1;
-       do
-       {
-        printf("Avançando 1 Casa para a Esquerda!\n");
-        i++;
-       } while (i <= numero3);
+       moverRainha (numero3, "Esquerda");
        
        
         break;
@@ -142,13 +150,7 @@ printf("Escolha a direção que deseja ir com o bispo!: \n");
        printf ("Escolha agora a quantidade de Casas: \n");
        scanf("%d", &numero3);
 
-       i = 1;
-       do
-       {
-        printf("Avançando 1 Casa para a Direita!\n");
-        i++;
-       } while (i <= numero3);
-       
+       moverRainha (numero3, "Direita");
         break;
 
     case 3:
@@ -156,12 +158,7 @@ printf("Escolha a direção que deseja ir com o bispo!: \n");
        printf ("Escolha agora a quantidade de Casas: \n");
        scanf("%d", &numero3);
 
-       i = 1;
-       do
-       {
-        printf("Avançando 1 Casa para Cima!\n");
-        i++;
-       } while (i <= numero3);
+       moverRainha (numero3, "Cima");
        
         break;
 
@@ -170,13 +167,7 @@ printf("Escolha a direção que deseja ir com o bispo!: \n");
        printf ("Escolha agora a quantidade de Casas: \n");
        scanf("%d", &numero3);
 
-       i = 1;
-       do
-       {
-        printf("Avançando 1 Casa para Baixo!\n");
-        i++;
-       } while (i <= numero3 );
-       
+       moverRainha (numero3, "Baixo");
         break;
     
     default:
@@ -201,7 +192,7 @@ printf("Escolha a direção que deseja ir com o bispo!: \n");
 
         do
         {
-            for ( MovCavalo = 0; MovCavalo <= 2; MovCavalo++)
+            for ( MovCavalo = 1; MovCavalo <= 2; MovCavalo++)
             {
 
                 printf("Se movendo 1 casa para a ESQUERDA!\n");
@@ -219,7 +210,7 @@ printf("Escolha a direção que deseja ir com o bispo!: \n");
     case 2:
             do
         {
-            for ( MovCavalo = 0; MovCavalo <= 2; MovCavalo++)
+            for ( MovCavalo = 1; MovCavalo <= 2; MovCavalo++)
             {
 
                 printf("Se movendo 1 casa para a DIREITA!\n");
@@ -238,7 +229,7 @@ printf("Escolha a direção que deseja ir com o bispo!: \n");
     case 3:
         do
         {
-            for ( MovCavalo = 0; MovCavalo <= 2; MovCavalo++)
+            for ( MovCavalo = 1; MovCavalo <= 2; MovCavalo++)
             {
 
                 printf("Se movendo 1 casa para ESQUERDA!\n");
@@ -256,7 +247,7 @@ printf("Escolha a direção que deseja ir com o bispo!: \n");
     case 4:
         do
         {
-            for ( MovCavalo = 0; MovCavalo <= 2; MovCavalo++)
+            for ( MovCavalo = 1; MovCavalo <= 2; MovCavalo++)
             {
 
                 printf("Se movendo 1 casa para DIREITA !\n");
